@@ -3,12 +3,8 @@
 .TemporaryItems
 .DS_Store
 Thumbs.db
-/bin/*.class
-/bin/*.jar
-/bin/*.war
-/bin/*.ear
+/bin/
 *.class
-*.jar
 *.war
 *.ear
 hs_error_pid*

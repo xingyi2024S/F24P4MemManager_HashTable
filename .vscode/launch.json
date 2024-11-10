@@ -1,0 +1,27 @@
+{
+    "configurations": [
+        {
+            "type": "java",
+            "name": "MinHeap",
+            "request": "launch",
+            "mainClass": "MinHeap",
+            "projectName": "F24P3ExternalSorting"
+        },
+        {
+            "type": "java",
+            "name": "ByteFile",
+            "request": "launch",
+            "mainClass": "ByteFile",
+            "projectName": "F24P3ExternalSorting"
+        },
+        {
+            "type": "java",
+            "name": "Launch Externalsort",
+            "request": "launch",
+            "args": [
+                "normal400.bin"
+            ],
+            "mainClass": "Externalsort"
+        }
+    ]
+}
