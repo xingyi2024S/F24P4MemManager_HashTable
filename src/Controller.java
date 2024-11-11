@@ -18,9 +18,9 @@ public class Controller {
      * @param blockSize
      *            The block size for memory management expansion.
      */
-    public Controller(int initialHashSize, int memPoolSize, int blockSize) {
+    public Controller(int initialHashSize, int memPoolSize) {
         this.hashTable = new Hash(initialHashSize);
-        this.memManager = new MemManager(memPoolSize, blockSize);
+        this.memManager = new MemManager(memPoolSize);
     }
 
 

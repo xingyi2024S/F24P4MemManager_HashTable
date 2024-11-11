@@ -57,7 +57,7 @@ public class SemManager {
             String commandFilePath = args[2];
 
             Controller controller = new Controller(hashTableSize,
-                memoryPoolSize, 128); 
+                memoryPoolSize); 
             CommandParser commandParser = new CommandParser(controller);
 
             try (BufferedReader reader = new BufferedReader(new FileReader(
