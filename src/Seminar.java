@@ -145,18 +145,23 @@ public class Seminar implements Serializable {
 
 
     /**
-     * @return a string representation of the object.
+     * @return a string representation of the object in the specified format.
      */
     public String toString() {
-        int i;
-        String mykeys = "";
-        for (i = 0; i < keywords.length; i++) {
-            mykeys += keywords[i];
-            if (i != keywords.length - 1)
-                mykeys += ", ";
+        StringBuilder sb = new StringBuilder();
+        sb.append("ID: ").append(id).append(", Title: ").append(title).append(
+            "\n");
+        sb.append("Date: ").append(date).append(", Length: ").append(length);
+        sb.append(", X: ").append(x).append(", Y: ").append(y).append(
+            ", Cost: ").append(cost).append("\n");
+        sb.append("Description: ").append(desc).append("\n");
+        sb.append("Keywords: ");
+        for (int i = 0; i < keywords.length; i++) {
+            sb.append(keywords[i]);
+            if (i < keywords.length - 1) {
+                sb.append(", ");
+            }
         }
-        return "ID: " + id + ", Title: " + title + "\nDate: " + date
-            + ", Length: " + length + ", X: " + x + ", Y: " + y + ", Cost: "
-            + cost + "\nDescription: " + desc + "\nKeywords: " + mykeys;
+        return sb.toString();
     }
 }
