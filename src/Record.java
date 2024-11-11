@@ -45,6 +45,11 @@ public class Record {
     }
 
 
+    public void setHandle(Handle handle) {
+        this.handle = handle;
+    }
+
+
     /**
      * Compares this Record to another object for equality.
      * 

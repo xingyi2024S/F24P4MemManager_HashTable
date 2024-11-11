@@ -15,43 +15,6 @@ public class Hash {
     private int capacity;
     private static final Record TOMBSTONE = new Record(-1, null);
 
-    /**
-     * The Record class represents a key-handle pair in the hash table.
-     */
-    public static class Record {
-        private int id;
-        private Handle handle;
-
-        /**
-         * Constructs a Record with the specified ID and handle.
-         * 
-         * @param id
-         *            The ID for the seminar record.
-         * @param handle
-         *            The memory handle associated with the seminar data.
-         */
-        public Record(int id, Handle handle) {
-            this.id = id;
-            this.handle = handle;
-        }
-
-
-        @Override
-        public int hashCode() {
-            return Integer.hashCode(id);
-        }
-
-
-        @Override
-        public boolean equals(Object obj) {
-            if (this == obj)
-                return true;
-            if (obj == null || getClass() != obj.getClass())
-                return false;
-            Record record = (Record)obj;
-            return id == record.id;
-        }
-    }
 
     /**
      * Constructs a new Hash object with the specified initial capacity.
@@ -103,9 +66,8 @@ public class Hash {
                 numberOfRecords++;
                 return pos;
             }
-            else if (allRecords[pos].id == id) {
-                // Key already exists, update the handle if necessary
-                allRecords[pos].handle = handle;
+            else if (allRecords[pos].getId() == id) {
+                allRecords[pos].setHandle(handle);
                 return pos;
             }
             i++;
@@ -130,7 +92,7 @@ public class Hash {
 
         for (Record record : oldTable) {
             if (record != null && record != TOMBSTONE) {
-                insert(record.id, record.handle);
+                insert(record.getId(), record.getHandle());
             }
         }
     }
@@ -153,8 +115,8 @@ public class Hash {
             if (allRecords[pos] == null) {
                 return null;
             }
-            if (allRecords[pos] != TOMBSTONE && allRecords[pos].id == id) {
-                return allRecords[pos].handle;
+            if (allRecords[pos] != TOMBSTONE && allRecords[pos].getId() == id) {
+                return allRecords[pos].getHandle();
             }
             i++;
         }
@@ -182,8 +144,8 @@ public class Hash {
             if (allRecords[pos] == null) {
                 return null;
             }
-            if (allRecords[pos] != TOMBSTONE && allRecords[pos].id == id) {
-                Handle handle = allRecords[pos].handle;
+            if (allRecords[pos] != TOMBSTONE && allRecords[pos].getId() == id) {
+                Handle handle = allRecords[pos].getHandle();
                 allRecords[pos] = TOMBSTONE; // Mark as tombstone
                 numberOfRecords--;
                 return handle;
@@ -233,7 +195,7 @@ public class Hash {
                 result.append(i + ": TOMBSTONE\n");
             }
             else if (allRecords[i] != null) {
-                result.append(i + ": |ID " + allRecords[i].id + "|\n");
+                result.append(i + ": |ID " + allRecords[i].getId() + "|\n");
             }
         }
 

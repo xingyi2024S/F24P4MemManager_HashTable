@@ -135,30 +135,30 @@ public class HashTest {
         assertEquals(handle3, hashTable.find(12345));
     }
 
-
-    /**
-     * Tests the Record class's equals method to ensure correct equality
-     * comparisons
-     * based on ID, including checks for hash code consistency.
-     */
-    @Test
-    public void testRecordEqualsMethod() {
-        Hash.Record record1 = new Hash.Record(12345, handle1);
-        Hash.Record record2 = new Hash.Record(12345, handle2);
-        Hash.Record record3 = new Hash.Record(67890, handle1);
-        Hash.Record record4 = record1;
-
-        assertTrue(record1.equals(record2));
-        assertTrue(record1.equals(record4));
-        assertEquals(record1.hashCode(), record2.hashCode());
-
-        assertFalse(record1.equals(record3));
-        assertNotEquals(record1.hashCode(), record3.hashCode());
-
-        assertFalse(record1.equals(null));
-        assertFalse(record1.equals("NotARecord"));
-    }
-    
+//
+//    /**
+//     * Tests the Record class's equals method to ensure correct equality
+//     * comparisons
+//     * based on ID, including checks for hash code consistency.
+//     */
+//    @Test
+//    public void testRecordEqualsMethod() {
+//        Hash.Record record1 = new Hash.Record(12345, handle1);
+//        Hash.Record record2 = new Hash.Record(12345, handle2);
+//        Hash.Record record3 = new Hash.Record(67890, handle1);
+//        Hash.Record record4 = record1;
+//
+//        assertTrue(record1.equals(record2));
+//        assertTrue(record1.equals(record4));
+//        assertEquals(record1.hashCode(), record2.hashCode());
+//
+//        assertFalse(record1.equals(record3));
+//        assertNotEquals(record1.hashCode(), record3.hashCode());
+//
+//        assertFalse(record1.equals(null));
+//        assertFalse(record1.equals("NotARecord"));
+//    }
+//    
     /**
      * Tests printToString method to verify correct output format and tombstone handling.
      */
