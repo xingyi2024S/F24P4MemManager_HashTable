@@ -36,7 +36,9 @@ public class ProblemSpecTest extends TestCase {
     public void testMInitx() {
         SemManager sem = new SemManager();
         assertNotNull(sem);
-        SemManager.main(null);
+
+        String[] args = { "512", "4", "TestData/P4Sample_input.txt" };
+        SemManager.main(args);
     }
 
 
@@ -49,11 +51,11 @@ public class ProblemSpecTest extends TestCase {
         String[] args = new String[3];
         args[0] = "512";
         args[1] = "4";
-        args[2] = "P4Sample_input.txt";
+        args[2] = "TestData/P4Sample_input.txt";
 
         SemManager.main(args);
         String output = systemOut().getHistory();
-        String referenceOutput = readFile("P4Sample_output.txt");
+        String referenceOutput = readFile("TestData/P4Sample_output.txt");
 // assertFuzzyEquals(referenceOutput, output);
     }
 
@@ -67,11 +69,11 @@ public class ProblemSpecTest extends TestCase {
         String[] args = new String[3];
         args[0] = "2048";
         args[1] = "16";
-        args[2] = "P4SimpSample_input.txt";
+        args[2] = "TestData/P4SimpSample_input.txt";
 
         SemManager.main(args);
         String output = systemOut().getHistory();
-        String referenceOutput = readFile("P4SimpSample_output.txt");
-// assertFuzzyEquals(referenceOutput, output);
+        String referenceOutput = readFile("TestData/P4SimpSample_output.txt");
+        assertFuzzyEquals(referenceOutput, output);
     }
 }
