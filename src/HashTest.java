@@ -158,4 +158,20 @@ public class HashTest {
         assertFalse(record1.equals(null));
         assertFalse(record1.equals("NotARecord"));
     }
+    
+    /**
+     * Tests printToString method to verify correct output format and tombstone handling.
+     */
+    @Test
+    public void testPrintToString() {
+        hashTable.insert(1, handle1);
+        hashTable.insert(2, handle2);
+        hashTable.remove(2);
+        
+        String output = hashTable.printToString();
+        assertTrue(output.contains("total records: 1"));
+        assertTrue(output.contains("1: |ID 1|"));
+        assertTrue(output.contains("TOMBSTONE"));
+    }
+
 }

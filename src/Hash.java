@@ -130,7 +130,7 @@ public class Hash {
 
         for (Record record : oldTable) {
             if (record != null && record != TOMBSTONE) {
-                insert(record.id, record.handle); 
+                insert(record.id, record.handle);
             }
         }
     }
@@ -151,10 +151,10 @@ public class Hash {
         do {
             pos = probe(home, i);
             if (allRecords[pos] == null) {
-                return null; 
+                return null;
             }
             if (allRecords[pos] != TOMBSTONE && allRecords[pos].id == id) {
-                return allRecords[pos].handle; 
+                return allRecords[pos].handle;
             }
             i++;
         }
@@ -219,23 +219,25 @@ public class Hash {
         return capacity;
     }
 
-// /**
-// * Prints the contents of the hash table.
-// *
-// * @return A string representation of the hash table contents.
-// */
-// public String printToString() {
-// StringBuilder result = new StringBuilder();
-//
-// for (int i = 0; i < capacity; i++) {
-// if (allRecords[i] == TOMBSTONE) {
-// result.append(i + ": TOMBSTONE\n");
-// } else if (allRecords[i] != null) {
-// result.append(i + ": |ID " + allRecords[i].id + "|\n");
-// }
-// }
-//
-// result.append("total records: " + numberOfRecords + "\n");
-// return result.toString();
-// }
+
+    /**
+     * Prints the contents of the hash table.
+     *
+     * @return A string representation of the hash table contents.
+     */
+    public String printToString() {
+        StringBuilder result = new StringBuilder();
+
+        for (int i = 0; i < capacity; i++) {
+            if (allRecords[i] == TOMBSTONE) {
+                result.append(i + ": TOMBSTONE\n");
+            }
+            else if (allRecords[i] != null) {
+                result.append(i + ": |ID " + allRecords[i].id + "|\n");
+            }
+        }
+
+        result.append("total records: " + numberOfRecords + "\n");
+        return result.toString();
+    }
 }
