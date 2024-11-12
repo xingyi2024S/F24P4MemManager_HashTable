@@ -22,11 +22,11 @@ public class HashTest {
      */
     @Before
     public void setUp() {
-        hashTable = new Hash(4); 
+        hashTable = new Hash(4);
         handle1 = new Handle(10, 50);
-        handle2 = new Handle(60, 100); 
+        handle2 = new Handle(60, 100);
         handle3 = new Handle(110, 150);
-        handle4 = new Handle(160, 200); 
+        handle4 = new Handle(160, 200);
     }
 
 
@@ -40,20 +40,12 @@ public class HashTest {
 
         assertEquals(handle1, hashTable.find(12345));
         assertEquals(handle2, hashTable.find(67890));
-    }
-
-
-    /**
-     * Tests handling of duplicate ID insertion
-     */
-    @Test
-    public void testDuplicateInsertion() {
+        //testDuplicateInsertion
         hashTable.insert(12345, handle1);
-        assertEquals(handle1, hashTable.find(12345));
-
-        hashTable.insert(12345, handle2);
-        assertEquals(handle2, hashTable.find(12345));
+        assertEquals(-1, hashTable.insert(12345, handle2));
     }
+
+
 
 
     /**
@@ -69,6 +61,7 @@ public class HashTest {
 
         hashTable.insert(12345, handle3);
         assertEquals(handle3, hashTable.find(12345));
+        
     }
 
 
@@ -94,15 +87,13 @@ public class HashTest {
      * Tests handling of collisions using quadratic probing
      */
     @Test
-    public void testCollisionHandling() {
-        int id1 = 12345;
-        int id2 = id1 + hashTable.getCapacity(); // Same hash, different key
-
-        hashTable.insert(id1, handle1);
-        hashTable.insert(id2, handle2);
-
-        assertEquals(handle1, hashTable.find(id1));
-        assertEquals(handle2, hashTable.find(id2));
+    public void probe() {
+        Hash hashTable = new Hash(10);
+        assertEquals(3, hashTable.probe(3, 0));
+        assertEquals(4, hashTable.probe(3, 1));
+        assertEquals(6, hashTable.probe(3, 2));
+        assertEquals(9, hashTable.probe(3, 3));
+        assertEquals(3, hashTable.probe(3, 4));
     }
 
 
@@ -135,43 +126,60 @@ public class HashTest {
         assertEquals(handle3, hashTable.find(12345));
     }
 
-//
-//    /**
-//     * Tests the Record class's equals method to ensure correct equality
-//     * comparisons
-//     * based on ID, including checks for hash code consistency.
-//     */
-//    @Test
-//    public void testRecordEqualsMethod() {
-//        Hash.Record record1 = new Hash.Record(12345, handle1);
-//        Hash.Record record2 = new Hash.Record(12345, handle2);
-//        Hash.Record record3 = new Hash.Record(67890, handle1);
-//        Hash.Record record4 = record1;
-//
-//        assertTrue(record1.equals(record2));
-//        assertTrue(record1.equals(record4));
-//        assertEquals(record1.hashCode(), record2.hashCode());
-//
-//        assertFalse(record1.equals(record3));
-//        assertNotEquals(record1.hashCode(), record3.hashCode());
-//
-//        assertFalse(record1.equals(null));
-//        assertFalse(record1.equals("NotARecord"));
-//    }
-//    
+
+
     /**
-     * Tests printToString method to verify correct output format and tombstone handling.
+     * Tests printToString method to verify correct output format and tombstone
+     * handling.
      */
     @Test
     public void testPrintToString() {
         hashTable.insert(1, handle1);
         hashTable.insert(2, handle2);
         hashTable.remove(2);
-        
+
         String output = hashTable.printToString();
         assertTrue(output.contains("total records 1"));
         assertTrue(output.contains("1 1"));
         assertTrue(output.contains("TOMBSTONE"));
     }
 
+
+    /**
+     * Tests inserting records that will cause collisions and verifying probe
+     * behavior.
+     */
+    @Test
+    public void testInsertAndProbeCollision() {
+        assertEquals(1, hashTable.insert(1, handle1));
+        assertEquals(3, hashTable.insert(3, handle2));
+        assertEquals(5, hashTable.insert(5, handle3));
+        assertEquals(2, hashTable.insert(9, handle4));
+
+        assertEquals(handle1, hashTable.find(1));
+        assertEquals(handle2, hashTable.find(3));
+        assertEquals(handle3, hashTable.find(5));
+        assertEquals(handle4, hashTable.find(9));
+
+        // test the tombstone
+        hashTable.remove(1);
+        assertEquals(1, hashTable.insert(17, handle1));
+
+    }
+
+
+    @Test
+    public void testhashInsertIntoTombstone() {
+        assertEquals(1, hashTable.insert(1, handle1));
+
+        assertEquals(-1, hashTable.insert(1, handle2));
+
+        assertNotNull(hashTable.remove(1));
+       
+        assertEquals(1, hashTable.insert(1, handle3));
+
+        assertNotNull(hashTable.find(1));
+
+    }
+    
 }

@@ -51,6 +51,8 @@ public class Hash {
      */
     public int insert(int id, Handle handle) {
         if (numberOfRecords >= capacity / 2) {
+            System.out.println("Hash table expanded to " + (capacity * 2)
+                + " records.");
             resize();
         }
 
@@ -66,9 +68,11 @@ public class Hash {
                 return pos;
             }
             else if (allRecords[pos].getId() == id) {
-                allRecords[pos].setHandle(handle);
-                return pos;
+                System.out.println(
+                    "Insert FAILED - There is already a record with ID " + id);
+                return -1; // failure due to duplicate ID
             }
+
             i++;
         }
         while (i < capacity);
@@ -81,8 +85,6 @@ public class Hash {
      * records.
      */
     private void resize() {
-        System.out.println("Hash table expanded to " + (capacity * 2)
-            + " records.");
         int oldCapacity = capacity;
         capacity *= 2;
         Record[] oldTable = allRecords;
@@ -166,7 +168,7 @@ public class Hash {
      *            The current probe attempt number.
      * @return The new probe position after applying quadratic probing.
      */
-    private int probe(int home, int i) {
+    public int probe(int home, int i) {
         return (home + (i * i + i) / 2) % capacity;
     }
 
