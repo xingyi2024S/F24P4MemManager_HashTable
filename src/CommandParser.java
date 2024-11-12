@@ -75,6 +75,15 @@ public class CommandParser {
 
 
     private void handlePrint(String line) {
-
+        if (line.contains("hashtable")) {
+            controller.printHashTable();
+        }
+        else if (line.contains("blocks")) {
+            controller.printFreeBlocks();
+        }
+        else {
+            System.out.println(
+                "Invalid print command. Please specify 'hashtable' or 'freeblock'.");
+        }
     }
 }
