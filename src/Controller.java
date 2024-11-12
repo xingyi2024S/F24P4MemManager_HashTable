@@ -81,6 +81,7 @@ public class Controller {
                     + id);
                 System.out.println(newSeminar.toString());
                 System.out.println("size: " + seminarSize);
+                
             }
         }
         catch (Exception e) {
@@ -139,10 +140,10 @@ public class Controller {
 
 
     /**
-     * Prints the contents of the hash table for debugging.
+     * Prints the contents of the hash table.
      */
     public void printHashTable() {
-        System.out.println("Hashtable:");
+        System.out.println("Hashtable");
         System.out.println(hashTable.printToString());
     }
 
@@ -151,7 +152,9 @@ public class Controller {
      * Prints the free block list in the memory manager.
      */
     public void printFreeBlocks() {
-        System.out.println("Free Blocks in Memory:");
-        memManager.dump();
+        System.out.println("Freeblock List:");
+        memManager.printFreeBlockList();
     }
+    
+    
 }
