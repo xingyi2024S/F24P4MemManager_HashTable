@@ -51,4 +51,5 @@ public class FreeBlock {
     public void setPrevious(FreeBlock previous) {
         this.previous = previous;
     }
+    
 }
