@@ -15,7 +15,6 @@ public class Hash {
     private int capacity;
     private static final Record TOMBSTONE = new Record(-1, null);
 
-
     /**
      * Constructs a new Hash object with the specified initial capacity.
      * 
@@ -82,8 +81,8 @@ public class Hash {
      * records.
      */
     private void resize() {
-        System.out.println("Hash table size doubled.");
-
+        System.out.println("Hash table expanded to " + (capacity * 2)
+            + " records.");
         int oldCapacity = capacity;
         capacity *= 2;
         Record[] oldTable = allRecords;
@@ -195,11 +194,11 @@ public class Hash {
                 result.append(i + ": TOMBSTONE\n");
             }
             else if (allRecords[i] != null) {
-                result.append(i + ": |ID " + allRecords[i].getId() + "|\n");
+                result.append(i + " " + allRecords[i].getId() + "|\n");
             }
         }
 
-        result.append("total records: " + numberOfRecords + "\n");
+        result.append("total records " + numberOfRecords);
         return result.toString();
     }
 }

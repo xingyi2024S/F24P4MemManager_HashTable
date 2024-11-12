@@ -169,8 +169,8 @@ public class HashTest {
         hashTable.remove(2);
         
         String output = hashTable.printToString();
-        assertTrue(output.contains("total records: 1"));
-        assertTrue(output.contains("1: |ID 1|"));
+        assertTrue(output.contains("total records 1"));
+        assertTrue(output.contains("1 1"));
         assertTrue(output.contains("TOMBSTONE"));
     }
 
