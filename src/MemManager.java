@@ -1,35 +1,211 @@
+/**
+ * The MemManager class is responsible for managing memory by allocating and
+ * deallocating memory blocks from a pool. It uses a doubly linked list to track
+ * free blocks and applies the "first fit" rule for allocating memory.
+ * 
+ * @version 2024.11.10
+ */
 public class MemManager {
-    
-    public MemManager(int poolSize, int blockSize) {
-        // Constructor does nothing for now
+    private byte[] memoryPool;
+    private FreeBlock freeBlockList;
+    private int initialMemorySize;
+    private int usedMemory = 0;
+
+    /**
+     * Constructs a MemManager with an initial memory pool size.
+     * 
+     * @param poolSize
+     *            The initial size of the memory pool in bytes.
+     */
+    public MemManager(int poolSize) {
+        memoryPool = new byte[poolSize];
+        freeBlockList = new FreeBlock(0, poolSize);
+        this.initialMemorySize = poolSize;
     }
 
 
     public Handle insert(byte[] data, int size) {
-        // Dummy insert method; returns a fixed Handle for testing purposes
-        return new Handle(0, size); // Using 0 as a placeholder position
+        if (size > memoryPool.length - usedMemory) {
+            growMemoryPool(size);
+        }
+
+        FreeBlock current = freeBlockList;
+        while (current != null) {
+
+            if (current.getSize() >= size) {
+                int position = current.getPosition();
+                // Copy the data into memory pool
+                System.arraycopy(data, 0, memoryPool, position, size);
+                usedMemory += size;
+
+                if (current.getSize() > size) {
+                    // Split the free block
+                    FreeBlock newFreeBlock = new FreeBlock(position + size,
+                        current.getSize() - size);
+                    newFreeBlock.setNext(current.getNext());
+                    if (current.getNext() != null) {
+                        current.getNext().setPrevious(newFreeBlock);
+                    }
+                    current.setNext(newFreeBlock);
+                    newFreeBlock.setPrevious(current);
+                    current.size = size;
+                }
+                else {
+                    if (current.getPrevious() != null) {
+                        current.getPrevious().setNext(current.getNext());
+                    }
+                    if (current.getNext() != null) {
+                        current.getNext().setPrevious(current.getPrevious());
+                    }
+                }
+
+                return new Handle(position, size);
+            }
+            current = current.getNext();
+        }
+
+        growMemoryPool(size);
+        return insert(data, size);
     }
 
 
-    public int length(Handle handle) {
-        // Dummy length method; return a fixed size
-        return handle.getLength();
+    /**
+     * Grows the memory pool when there is not enough space to store a new
+     * record.
+     * Expands by a fixed block size (the initial memory size).
+     */
+    private void growMemoryPool(int requiredSize) {
+        int currentSize = memoryPool.length;
+        int availableMemory = currentSize - usedMemory;
+
+        // Check if there is enough space available, if not, expand
+        if (availableMemory < requiredSize) {
+            int newSize = currentSize + this.initialMemorySize;
+            System.out.println("Memory pool expanded to " + newSize + " bytes");
+
+            // Create a new memory pool with the expanded size
+            byte[] newMemoryPool = new byte[newSize];
+            System.arraycopy(memoryPool, 0, newMemoryPool, 0, currentSize);
+            memoryPool = newMemoryPool;
+
+            // Add new free block at the end of the pool
+            FreeBlock newFreeBlock = new FreeBlock(currentSize, newSize
+                - currentSize);
+            FreeBlock lastFreeBlock = freeBlockList;
+            while (lastFreeBlock.getNext() != null) {
+                lastFreeBlock = lastFreeBlock.getNext();
+            }
+            lastFreeBlock.setNext(newFreeBlock);
+            newFreeBlock.setPrevious(lastFreeBlock);
+        }
     }
 
 
+    /**
+     * Removes a block from the memory pool, freeing the space it occupied.
+     * 
+     * @param handle
+     *            The handle representing the block to be removed.
+     */
     public void remove(Handle handle) {
-       
+        FreeBlock current = freeBlockList;
+
+        while (current != null) {
+            if (current.getPosition() == handle.getPosition()) {
+
+                // Merge adjacent free blocks if possible
+
+                // Check if the next block is adjacent
+                if (current.getNext() != null && current.getPosition() + current
+                    .getSize() == current.getNext().getPosition()) {
+                    current.size += current.getNext().getSize();
+                    current.setNext(current.getNext().getNext());
+                    if (current.getNext() != null) {
+                        current.getNext().setPrevious(current);
+                    }
+                }
+
+                // Check if the previous block is adjacent
+                if (current.getPrevious() != null && current.getPosition()
+                    + current.getSize() == current.getPrevious()
+                        .getPosition()) {
+                    current.getPrevious().size += current.getSize();
+                    current.getPrevious().setNext(current.getNext());
+                    if (current.getNext() != null) {
+                        current.getNext().setPrevious(current.getPrevious());
+                    }
+                }
+
+                // Remove the current block from the list (after merging)
+                if (current.getPrevious() != null) {
+                    current.getPrevious().setNext(current.getNext());
+                }
+                if (current.getNext() != null) {
+                    current.getNext().setPrevious(current.getPrevious());
+                }
+                usedMemory -= handle.getLength();
+                return;
+            }
+            current = current.getNext();
+        }
     }
 
 
+    /**
+     * Retrieves data from the memory pool using the specified handle and copies
+     * it into the provided space.
+     * 
+     * @param space
+     *            The array to copy the data into.
+     * @param handle
+     *            The handle representing the block of data to retrieve.
+     * @param size
+     *            The number of bytes to copy from the memory pool.
+     * @return The number of bytes actually copied into the space.
+     */
     public int get(byte[] space, Handle handle, int size) {
-        // Dummy get method; does nothing
-        return 0; // Returns zero bytes for testing purposes
+        if (handle.getPosition() + size <= memoryPool.length) {
+            System.arraycopy(memoryPool, handle.getPosition(), space, 0, size);
+            return size;
+        }
+        return 0;
     }
 
 
-    public void dump() {
-        // Dummy dump method; does nothing for now
-        System.out.println("Memory dump: Dummy implementation.");
+
+
+    public int getUsedMemory() {
+        return usedMemory;
     }
+
+
+    public int getMemoryPoolSize() {
+        return memoryPool.length;
+    }
+
+
+    public FreeBlock getFreeBlockList() {
+        return freeBlockList;
+    }
+
+
+    public void printFreeBlockList() {
+        FreeBlock current = freeBlockList;
+
+        if (current == null) {
+            System.out.println("FreeBlock List is empty.");
+            return;
+        }
+        while (current != null) {
+            System.out.print("(" + current.getPosition() + "," + current
+                .getSize() + ")");
+
+            if (current.getNext() != null) {
+                System.out.print(" -> ");
+            }
+            current = current.getNext();
+        }
+        System.out.println();
+    }
+
 }
