@@ -47,7 +47,8 @@ public class SemManager {
         // Ensure correct number of arguments
         if (args.length < 3) {
             System.out.println(
-                "Usage: java SemManager <memory pool size> <hash table size> <command file>");
+                "Usage: java SemManager <memory pool size>"
+                + "<hash table size> <command file>");
             return;
         }
 
@@ -68,7 +69,8 @@ public class SemManager {
         }
         catch (NumberFormatException e) {
             System.out.println(
-                "Error: Invalid memory pool or hash table size. Must be integers.");
+                "Error: Invalid memory pool or hash table size."
+                + "Must be integers.");
         }
         catch (IOException e) {
             System.out.println("Error: Could not read command file " + args[2]);

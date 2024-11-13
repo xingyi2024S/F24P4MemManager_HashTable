@@ -39,12 +39,10 @@ public class HashTest {
 
         assertEquals(handle1, hashTable.find(12345));
         assertEquals(handle2, hashTable.find(67890));
-        //testDuplicateInsertion
+        // testDuplicateInsertion
         hashTable.insert(12345, handle1);
         assertEquals(-1, hashTable.insert(12345, handle2));
     }
-
-
 
 
     /**
@@ -60,7 +58,7 @@ public class HashTest {
 
         hashTable.insert(12345, handle3);
         assertEquals(handle3, hashTable.find(12345));
-        
+
     }
 
 
@@ -87,12 +85,12 @@ public class HashTest {
      */
     @Test
     public void probe() {
-        Hash hashTable = new Hash(10);
-        assertEquals(3, hashTable.probe(3, 0));
-        assertEquals(4, hashTable.probe(3, 1));
-        assertEquals(6, hashTable.probe(3, 2));
-        assertEquals(9, hashTable.probe(3, 3));
-        assertEquals(3, hashTable.probe(3, 4));
+        Hash newHashTable = new Hash(10);
+        assertEquals(3, newHashTable.probe(3, 0));
+        assertEquals(4, newHashTable.probe(3, 1));
+        assertEquals(6, newHashTable.probe(3, 2));
+        assertEquals(9, newHashTable.probe(3, 3));
+        assertEquals(3, newHashTable.probe(3, 4));
     }
 
 
@@ -124,7 +122,6 @@ public class HashTest {
         hashTable.insert(12345, handle3);
         assertEquals(handle3, hashTable.find(12345));
     }
-
 
 
     /**
@@ -167,6 +164,9 @@ public class HashTest {
     }
 
 
+    /**
+     * Test insertion into tombstone.
+     */
     @Test
     public void testhashInsertIntoTombstone() {
         assertEquals(1, hashTable.insert(1, handle1));
@@ -174,11 +174,11 @@ public class HashTest {
         assertEquals(-1, hashTable.insert(1, handle2));
 
         assertNotNull(hashTable.remove(1));
-       
+
         assertEquals(1, hashTable.insert(1, handle3));
 
         assertNotNull(hashTable.find(1));
 
     }
-    
+
 }

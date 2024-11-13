@@ -17,8 +17,6 @@ public class Controller {
      *            The initial size of the hash table.
      * @param memPoolSize
      *            The initial size of the memory pool in bytes.
-     * @param blockSize
-     *            The block size for memory management expansion.
      */
     public Controller(int initialHashSize, int memPoolSize) {
         this.hashTable = new Hash(initialHashSize);

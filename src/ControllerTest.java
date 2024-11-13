@@ -6,7 +6,9 @@ import java.io.PrintStream;
 /**
  * Test class for the Controller class using sample input.
  * 
- * @version 2024.11.10
+ * @author Xingyi Wang
+ * @author Zhengyang Lu
+ * @version 2024.11.12
  */
 public class ControllerTest extends TestCase {
 
@@ -49,7 +51,8 @@ public class ControllerTest extends TestCase {
         assertOutput("Successfully inserted record with ID 1\n"
             + "ID: 1, Title: Overview of HCI Research at VT\n"
             + "Date: 0610051600, Length: 90, X: 10, Y: 10, Cost: 45\n"
-            + "Description: This seminar will present an overview of HCI research at VT\n"
+            + "Description: This seminar will present an overview of HCI "
+            + "research at VT\n"
             + "Keywords: HCI, Computer_Science, VT, Virginia_Tech\n"
             + "size: 173");
 
@@ -61,10 +64,13 @@ public class ControllerTest extends TestCase {
                 "Computer_Science", "VT", "Virginia_Tech" },
             "Introduction to bioinformatics and computation biology");
         assertOutput("Successfully inserted record with ID 2\n"
-            + "ID: 2, Title: Computational Biology and Bioinformatics in CS at Virginia Tech\n"
+            + "ID: 2, Title: Computational Biology and Bioinformatics in "
+            + "CS at Virginia Tech\n"
             + "Date: 0610071600, Length: 60, X: 20, Y: 10, Cost: 30\n"
-            + "Description: Introduction to bioinformatics and computation biology\n"
-            + "Keywords: Bioinformatics, computation_biology, Biology, Computer_Science, VT, Virginia_Tech\n"
+            + "Description: Introduction to bioinformatics "
+            + "and computation biology\n"
+            + "Keywords: Bioinformatics, computation_biology, Biology, "
+            + "Computer_Science, VT, Virginia_Tech\n"
             + "size: 242");
 
         // Insert 10
@@ -76,7 +82,8 @@ public class ControllerTest extends TestCase {
             + "Successfully inserted record with ID 10\n"
             + "ID: 10, Title: Overview of HPC and CSE Research at VT\n"
             + "Date: 0703301125, Length: 35, X: 0, Y: 0, Cost: 25\n"
-            + "Description: Learn what kind of research is done on HPC and CSE at VT\n"
+            + "Description: Learn what kind of research is done on HPC "
+            + "and CSE at VT\n"
             + "Keywords: HPC, CSE, computer_science\n" + "size: 164");
     }
 
@@ -99,8 +106,10 @@ public class ControllerTest extends TestCase {
         assertOutput("Found record with ID 3:\n"
             + "ID: 3, Title: Computing Systems Research at VT\n"
             + "Date: 0701250830, Length: 30, X: 30, Y: 10, Cost: 17\n"
-            + "Description: Seminar about the Computing systems research at VT\n"
-            + "Keywords: high_performance_computing, grids, VT, computer science");
+            + "Description: Seminar about the Computing systems "
+            + "research at VT\n"
+            + "Keywords: high_performance_computing, grids, VT,"
+            + " computer science");
 
         // Attempt to search for a non-existing record
         controller.search(99);

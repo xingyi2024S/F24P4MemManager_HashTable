@@ -119,7 +119,7 @@ public class CommandParser {
      * For dealing with the "print" command.
      * 
      * @param line
-     *          The string after the "print" keyword.
+     *            The string after the "print" keyword.
      */
     private void handlePrint(String line) {
         if (line.contains("hashtable")) {
@@ -130,7 +130,8 @@ public class CommandParser {
         }
         else {
             System.out.println(
-                "Invalid print command. Please specify 'hashtable' or 'freeblock'.");
+                "Invalid print command." +
+                    "Please specify 'hashtable' or 'freeblock'.");
         }
     }
 }

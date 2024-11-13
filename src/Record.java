@@ -45,6 +45,12 @@ public class Record {
     }
 
 
+    /**
+     * Set the handle for this Record.
+     * 
+     * @param handle
+     *            Handle to set.
+     */
     public void setHandle(Handle handle) {
         this.handle = handle;
     }
