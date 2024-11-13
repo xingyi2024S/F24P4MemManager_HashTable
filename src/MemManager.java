@@ -24,6 +24,15 @@ public class MemManager {
     }
 
 
+    /**
+     * Insert data into the memory pool.
+     * 
+     * @param data
+     *            The data to insert.
+     * @param size
+     *            The size of the data.
+     * @return The Handle for the data we just inserted.
+     */
     public Handle insert(byte[] data, int size) {
         if (size > memoryPool.length - usedMemory) {
             growMemoryPool(size);
@@ -73,6 +82,9 @@ public class MemManager {
      * Grows the memory pool when there is not enough space to store a new
      * record.
      * Expands by a fixed block size (the initial memory size).
+     * 
+     * @param requiredSize
+     *            Required size for the new data to insert.
      */
     private void growMemoryPool(int requiredSize) {
         int currentSize = memoryPool.length;
@@ -174,21 +186,39 @@ public class MemManager {
     }
 
 
+    /**
+     * Get used memory.
+     *
+     * @return usedMemory.
+     */
     public int getUsedMemory() {
         return usedMemory;
     }
 
 
+    /**
+     * Get memory pool size.
+     * 
+     * @return memoryPoolSize.
+     */
     public int getMemoryPoolSize() {
         return memoryPool.length;
     }
 
 
+    /**
+     * Get free block list.
+     * 
+     * @return freeBlockList.
+     */
     public FreeBlock getFreeBlockList() {
         return freeBlockList;
     }
 
 
+    /**
+     * Print the free block list.
+     */
     public void printFreeBlockList() {
         FreeBlock current = freeBlockList;
 
