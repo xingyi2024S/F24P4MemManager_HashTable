@@ -48,7 +48,7 @@ public class MemManager {
                     }
                     current.setNext(newFreeBlock);
                     newFreeBlock.setPrevious(current);
-                    current.size = size;
+                    current.setSize(size);
                 }
                 else {
                     if (current.getPrevious() != null) {
@@ -118,7 +118,8 @@ public class MemManager {
                 // Check if the next block is adjacent
                 if (current.getNext() != null && current.getPosition() + current
                     .getSize() == current.getNext().getPosition()) {
-                    current.size += current.getNext().getSize();
+                    current.setSize(current.getSize() + current.getNext()
+                        .getSize());
                     current.setNext(current.getNext().getNext());
                     if (current.getNext() != null) {
                         current.getNext().setPrevious(current);
@@ -129,7 +130,8 @@ public class MemManager {
                 if (current.getPrevious() != null && current.getPosition()
                     + current.getSize() == current.getPrevious()
                         .getPosition()) {
-                    current.getPrevious().size += current.getSize();
+                    current.getPrevious().setSize(current.getPrevious()
+                        .getSize() + current.getSize());
                     current.getPrevious().setNext(current.getNext());
                     if (current.getNext() != null) {
                         current.getNext().setPrevious(current.getPrevious());
@@ -170,8 +172,6 @@ public class MemManager {
         }
         return 0;
     }
-
-
 
 
     public int getUsedMemory() {
