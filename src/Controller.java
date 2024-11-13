@@ -1,7 +1,9 @@
 /**
- * Controller for project 4.
+ * The Controller class for managing the hash table and memory pool.
  *
- * @version 2024.11.10
+ * @author Xingyi Wang
+ * @author Zhengyang Lu
+ * @version 2024.11.12
  */
 public class Controller {
 
@@ -81,7 +83,7 @@ public class Controller {
                     + id);
                 System.out.println(newSeminar.toString());
                 System.out.println("size: " + seminarSize);
-                
+
             }
         }
         catch (Exception e) {
@@ -155,6 +157,5 @@ public class Controller {
         System.out.println("Freeblock List:");
         memManager.printFreeBlockList();
     }
-    
-    
+
 }
