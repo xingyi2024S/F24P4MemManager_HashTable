@@ -156,4 +156,17 @@ public class Controller {
         memManager.printFreeBlockList();
     }
 
+    
+    public byte[] getData(int id) {
+        Handle handle = hashTable.find(id);  
+        if (handle == null) {
+            return null;  
+        }
+
+        byte[] data = new byte[handle.getLength()];  
+        memManager.get(data, handle, handle.getLength());  
+        return data;
+    }
+
+    
 }
