@@ -2,17 +2,6 @@ import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
 
-/**
- * {Project Description Here}
- */
-
-/**
- * The class containing the main method.
- *
- * @author {Your Name Here}
- * @version {Put Something Here}
- */
-
 // On my honor:
 // - I have not used source code obtained from another current or
 // former student, or any other unauthorized source, either
@@ -32,6 +21,17 @@ import java.io.IOException;
 // during the discussion. I have violated neither the spirit nor
 // letter of this restriction.
 
+/**
+ * SemManager project.
+ */
+
+/**
+ * The class containing the main method.
+ *
+ * @author Zhengyang Lu
+ * @author Xingyi Wang
+ * @version 2024.11.08
+ */
 public class SemManager {
 
     /**
@@ -57,7 +57,7 @@ public class SemManager {
             String commandFilePath = args[2];
 
             Controller controller = new Controller(hashTableSize,
-                memoryPoolSize); 
+                memoryPoolSize);
             CommandParser commandParser = new CommandParser(controller);
 
             try (BufferedReader reader = new BufferedReader(new FileReader(
