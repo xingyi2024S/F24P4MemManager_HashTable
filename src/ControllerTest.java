@@ -54,7 +54,7 @@ public class ControllerTest extends TestCase {
             + "Description: This seminar will present an overview of HCI "
             + "research at VT\n"
             + "Keywords: HCI, Computer_Science, VT, Virginia_Tech\n"
-            + "size: 173");
+            + "Size: 173");
 
         // Insert 2
         controller.insert(2,
@@ -71,7 +71,7 @@ public class ControllerTest extends TestCase {
             + "and computation biology\n"
             + "Keywords: Bioinformatics, computation_biology, Biology, "
             + "Computer_Science, VT, Virginia_Tech\n"
-            + "size: 242");
+            + "Size: 242");
 
         // Insert 10
         controller.insert(10, "Overview of HPC and CSE Research at VT",
@@ -84,7 +84,7 @@ public class ControllerTest extends TestCase {
             + "Date: 0703301125, Length: 35, X: 0, Y: 0, Cost: 25\n"
             + "Description: Learn what kind of research is done on HPC "
             + "and CSE at VT\n"
-            + "Keywords: HPC, CSE, computer_science\n" + "size: 164");
+            + "Keywords: HPC, CSE, computer_science\n" + "Size: 164");
     }
 
 

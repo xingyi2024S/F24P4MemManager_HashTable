@@ -2,6 +2,7 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import student.TestCase;
+import org.junit.Test;
 
 /**
  * Testing against reference implementation of this project.
@@ -68,6 +69,7 @@ public class ProblemSpecTest extends TestCase {
      * 
      * @throws IOException
      */
+    @Test
     public void testparserinput() throws IOException {
         String[] args = new String[3];
         args[0] = "2048";
@@ -77,6 +79,6 @@ public class ProblemSpecTest extends TestCase {
         SemManager.main(args);
         String output = systemOut().getHistory();
         String referenceOutput = readFile("TestData/P4SimpSample_output.txt");
-        assertFuzzyEquals(referenceOutput, output);
+        assertEquals(referenceOutput, output);
     }
 }

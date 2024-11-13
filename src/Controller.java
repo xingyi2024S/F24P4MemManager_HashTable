@@ -80,7 +80,7 @@ public class Controller {
                 System.out.println("Successfully inserted record with ID "
                     + id);
                 System.out.println(newSeminar.toString());
-                System.out.println("size: " + seminarSize);
+                System.out.println("Size: " + seminarSize);
 
             }
         }
