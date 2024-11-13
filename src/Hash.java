@@ -52,7 +52,7 @@ public class Hash {
     public int insert(int id, Handle handle) {
         if (numberOfRecords >= capacity / 2) {
             System.out.println("Hash table expanded to " + (capacity * 2)
-                + " records.");
+                + " records");
             resize();
         }
 
@@ -196,11 +196,11 @@ public class Hash {
                 result.append(i + ": TOMBSTONE\n");
             }
             else if (allRecords[i] != null) {
-                result.append(i + " " + allRecords[i].getId() + "|\n");
+                result.append(i + ": " + allRecords[i].getId() + "\n");
             }
         }
 
-        result.append("total records " + numberOfRecords);
+        result.append("total records: " + numberOfRecords);
         return result.toString();
     }
 }

@@ -143,7 +143,7 @@ public class Controller {
      * Prints the contents of the hash table.
      */
     public void printHashTable() {
-        System.out.println("Hashtable");
+        System.out.println("Hashtable:");
         System.out.println(hashTable.printToString());
     }
 

@@ -37,7 +37,7 @@ Hashtable:
 5: 10
 total records: 4
 Freeblock List:
-(761,263)
+(0,164) -> (164,9) -> (173,182) -> (355,60) -> (415,97) -> (512,512)
 Record with ID 2 successfully deleted from the database
 Search FAILED -- There is no record with ID 2
 Hashtable:
@@ -47,7 +47,7 @@ Hashtable:
 5: 10
 total records: 3
 Freeblock List:
-(173,242) -> (761,263)
+(0,164) -> (164,9) -> (415,97) -> (512,512)
 Delete FAILED -- There is no record with ID 6
 Successfully inserted record with ID 2
 ID: 2, Title: Much More Computational Biology and Bioinformatics in CS at Virginia Tech
@@ -63,4 +63,4 @@ Hashtable:
 5: TOMBSTONE
 total records: 3
 Freeblock List:
-(173,242) -> (597,164) -> (1021,3)
+(0,173) -> (415,97) -> (512,260) -> (772,252)

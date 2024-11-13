@@ -51,6 +51,7 @@ public class ProblemSpecTest extends TestCase {
      * 
      * @throws IOException
      */
+    @Test
     public void testparserfull() throws IOException {
         String[] args = new String[3];
         args[0] = "512";
@@ -59,8 +60,9 @@ public class ProblemSpecTest extends TestCase {
 
         SemManager.main(args);
         String output = systemOut().getHistory();
-        String referenceOutput = readFile("TestData/P4Sample_output.txt");
-// assertFuzzyEquals(referenceOutput, output);
+        String referenceOutput = readFile(
+            "TestData/P4Sample_output_wrong_blocks.txt");
+        assertEquals(referenceOutput, output);
     }
 
 
