@@ -4,6 +4,10 @@ import static org.junit.Assert.*;
 
 /**
  * Tests for MemManager.
+ * 
+ * @author Zhengyang Lu
+ * @author Xingyi Wang
+ * @version 2024.11.10
  */
 public class MemManagerTest {
 

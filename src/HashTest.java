@@ -7,7 +7,6 @@ import static org.junit.Assert.*;
  * 
  * @author Zhengyang Lu
  * @author Xingyi Wang
- * 
  * @version 2024.11.08
  */
 public class HashTest {

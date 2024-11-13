@@ -3,6 +3,8 @@
  * deallocating memory blocks from a pool. It uses a doubly linked list to track
  * free blocks and applies the "first fit" rule for allocating memory.
  * 
+ * @author Zhengyang Lu
+ * @author Xingyi Wang
  * @version 2024.11.10
  */
 public class MemManager {

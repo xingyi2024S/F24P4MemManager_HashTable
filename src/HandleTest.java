@@ -6,6 +6,10 @@ import static org.junit.Assert.*;
  * Tests for the Handle class.
  *
  * Focuses on construction, equality, and representation of Handle instances.
+ * 
+ * @author Zhengyang Lu
+ * @author Xingyi Wang
+ * @version 2024.11.10
  */
 public class HandleTest {
     private Handle handle1;

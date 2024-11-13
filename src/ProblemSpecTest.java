@@ -4,8 +4,11 @@ import java.nio.file.Paths;
 import student.TestCase;
 
 /**
- * @author {Your Name Here}
- * @version {Put Something Here}
+ * Testing against reference implementation of this project.
+ * 
+ * @author Zhengyang Lu
+ * @author Xingyi Wang
+ * @version 2024.11.10
  */
 public class ProblemSpecTest extends TestCase {
     /**
