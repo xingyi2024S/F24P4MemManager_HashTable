@@ -1,14 +1,34 @@
 import java.io.BufferedReader;
 import java.io.IOException;
 
+/**
+ * CommandParser class for reading in commands and calling the appropriate
+ * functions.
+ * 
+ * @author Xingyi Wang
+ * @author Zhengyang Lu
+ * @version 2024.11.12
+ */
 public class CommandParser {
     private Controller controller;
 
+    /**
+     * Constructor for the CommandParser class.
+     * 
+     * @param controller
+     *            The controller managing the hash table and memory pool.
+     */
     public CommandParser(Controller controller) {
         this.controller = controller;
     }
 
 
+    /**
+     * Parses the the "verb" of the command and calls the appropriate function.
+     * 
+     * @param reader
+     *            The BufferedReader with the commands.
+     */
     public void parseCommands(BufferedReader reader) {
         try {
             String line;
@@ -36,6 +56,15 @@ public class CommandParser {
     }
 
 
+    /**
+     * For dealing with the "insert" command.
+     * 
+     * @param reader
+     *            The BufferedReader with the commands.
+     * @param firstLine
+     *            The first line of the command.
+     * @throws IOException
+     */
     private void handleInsert(BufferedReader reader, String firstLine)
         throws IOException {
         int id = Integer.parseInt(firstLine.split("\\s+")[1].trim());
@@ -57,12 +86,24 @@ public class CommandParser {
     }
 
 
+    /**
+     * For dealing with the "delete" command.
+     * 
+     * @param line
+     *            The string after the "delete" keyword.
+     */
     private void handleDelete(String line) {
         int id = Integer.parseInt(line.split("\\s+")[1].trim());
         controller.delete(id);
     }
 
 
+    /**
+     * For dealing with the "search" command.
+     * 
+     * @param line
+     *            The string after the "search" keyword.
+     */
     private void handleSearch(String line) {
         int id = Integer.parseInt(line.split("\\s+")[1].trim());
         try {
@@ -74,6 +115,12 @@ public class CommandParser {
     }
 
 
+    /**
+     * For dealing with the "print" command.
+     * 
+     * @param line
+     *          The string after the "print" keyword.
+     */
     private void handlePrint(String line) {
         if (line.contains("hashtable")) {
             controller.printHashTable();
