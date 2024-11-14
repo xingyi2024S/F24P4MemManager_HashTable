@@ -40,7 +40,7 @@ public class MemManager {
         FreeBlock block = freeBlockList.findFirstFit(dataSize);
 
         if (block == null) {
-            expandMemoryPool(initialPoolSize);
+            expandMemoryPool();
             block = freeBlockList.findFirstFit(dataSize);
             System.out.println("Memory pool expanded to " + memoryPool.length
                 + " bytes");
@@ -69,14 +69,14 @@ public class MemManager {
      * @param requiredSize
      *            Required size for the new data to insert.
      */
-    private void expandMemoryPool(int additionalSize) {
+    private void expandMemoryPool() {
         int oldSize = memoryPool.length;
-        int newSize = memoryPool.length + additionalSize;
+        int newSize = memoryPool.length + initialPoolSize;
         byte[] newMemoryPool = new byte[newSize];
         System.arraycopy(memoryPool, 0, newMemoryPool, 0, oldSize);
         memoryPool = newMemoryPool;
         freeBlockList = FreeBlock.addFreeBlock(freeBlockList, oldSize,
-            additionalSize);
+            initialPoolSize);
     }
 
 
@@ -152,5 +152,17 @@ public class MemManager {
         System.out.print("Freeblock List:\n");
         FreeBlock.printFreeBlocks(freeBlockList);
     }
+
+
+    /**
+     * Returns the current size of the memory pool.
+     * 
+     * @return The size of the memory pool in bytes.
+     */
+    public int getMemoryPoolSize() {
+        return memoryPool.length;
+    }
+
+ 
 
 }
