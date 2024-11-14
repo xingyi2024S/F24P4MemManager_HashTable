@@ -55,6 +55,14 @@ public class Handle {
         return "Handle[position=" + position + ", length=" + length + "]";
     }
 
+    /**
+     * Returns the length (size) of the record.
+     *
+     * @return The length of the record in bytes.
+     */
+    public int getSize() {
+        return length;
+    }
 
     /**
      * Compares this Handle to another object for equality.
