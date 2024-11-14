@@ -10,8 +10,7 @@
 public class MemManager {
     private byte[] memoryPool;
     private FreeBlock freeBlockList;
-    private int initialMemorySize;
-    private int usedMemory = 0;
+    private int initialPoolSize;
 
     /**
      * Constructs a MemManager with an initial memory pool size.
@@ -22,7 +21,7 @@ public class MemManager {
     public MemManager(int poolSize) {
         memoryPool = new byte[poolSize];
         freeBlockList = new FreeBlock(0, poolSize);
-        this.initialMemorySize = poolSize;
+        this.initialPoolSize = poolSize;
     }
 
 
@@ -35,48 +34,30 @@ public class MemManager {
      *            The size of the data.
      * @return The Handle for the data we just inserted.
      */
-    public Handle insert(byte[] data, int size) {
-        if (size > memoryPool.length - usedMemory) {
-            growMemoryPool(size);
+    public Handle insert(byte[] data) {
+        int dataSize = data.length;
+
+        FreeBlock block = freeBlockList.findFirstFit(dataSize);
+
+        if (block == null) {
+            expandMemoryPool(initialPoolSize);
+            block = freeBlockList.findFirstFit(dataSize);
+            System.out.println("Memory pool expanded to " + memoryPool.length
+                + " bytes");
         }
 
-        FreeBlock current = freeBlockList;
-        while (current != null) {
+        System.arraycopy(data, 0, memoryPool, block.getPosition(), dataSize);
+        Handle handle = new Handle(block.getPosition(), dataSize);
 
-            if (current.getSize() >= size) {
-                int position = current.getPosition();
-                // Copy the data into memory pool
-                System.arraycopy(data, 0, memoryPool, position, size);
-                usedMemory += size;
-
-                if (current.getSize() > size) {
-                    // Split the free block
-                    FreeBlock newFreeBlock = new FreeBlock(position + size,
-                        current.getSize() - size);
-                    newFreeBlock.setNext(current.getNext());
-                    if (current.getNext() != null) {
-                        current.getNext().setPrevious(newFreeBlock);
-                    }
-                    current.setNext(newFreeBlock);
-                    newFreeBlock.setPrevious(current);
-                    current.setSize(size);
-                }
-                else {
-                    if (current.getPrevious() != null) {
-                        current.getPrevious().setNext(current.getNext());
-                    }
-                    if (current.getNext() != null) {
-                        current.getNext().setPrevious(current.getPrevious());
-                    }
-                }
-
-                return new Handle(position, size);
-            }
-            current = current.getNext();
+        if (block.getSize() == dataSize) {
+            freeBlockList = FreeBlock.remove(freeBlockList, block);
+        }
+        else {
+            block.setPosition(block.getPosition() + dataSize);
+            block.setSize(block.getSize() - dataSize);
         }
 
-        growMemoryPool(size);
-        return insert(data, size);
+        return handle;
     }
 
 
@@ -88,30 +69,14 @@ public class MemManager {
      * @param requiredSize
      *            Required size for the new data to insert.
      */
-    private void growMemoryPool(int requiredSize) {
-        int currentSize = memoryPool.length;
-        int availableMemory = currentSize - usedMemory;
-
-        // Check if there is enough space available, if not, expand
-        if (availableMemory < requiredSize) {
-            int newSize = currentSize + this.initialMemorySize;
-            System.out.println("Memory pool expanded to " + newSize + " bytes");
-
-            // Create a new memory pool with the expanded size
-            byte[] newMemoryPool = new byte[newSize];
-            System.arraycopy(memoryPool, 0, newMemoryPool, 0, currentSize);
-            memoryPool = newMemoryPool;
-
-            // Add new free block at the end of the pool
-            FreeBlock newFreeBlock = new FreeBlock(currentSize, newSize
-                - currentSize);
-            FreeBlock lastFreeBlock = freeBlockList;
-            while (lastFreeBlock.getNext() != null) {
-                lastFreeBlock = lastFreeBlock.getNext();
-            }
-            lastFreeBlock.setNext(newFreeBlock);
-            newFreeBlock.setPrevious(lastFreeBlock);
-        }
+    private void expandMemoryPool(int additionalSize) {
+        int oldSize = memoryPool.length;
+        int newSize = memoryPool.length + additionalSize;
+        byte[] newMemoryPool = new byte[newSize];
+        System.arraycopy(memoryPool, 0, newMemoryPool, 0, oldSize);
+        memoryPool = newMemoryPool;
+        freeBlockList = FreeBlock.addFreeBlock(freeBlockList, oldSize,
+            additionalSize);
     }
 
 
@@ -122,48 +87,9 @@ public class MemManager {
      *            The handle representing the block to be removed.
      */
     public void remove(Handle handle) {
-        FreeBlock current = freeBlockList;
-
-        while (current != null) {
-            if (current.getPosition() == handle.getPosition()) {
-
-                // Merge adjacent free blocks if possible
-
-                // Check if the next block is adjacent
-                if (current.getNext() != null && current.getPosition() + current
-                    .getSize() == current.getNext().getPosition()) {
-                    current.setSize(current.getSize() + current.getNext()
-                        .getSize());
-                    current.setNext(current.getNext().getNext());
-                    if (current.getNext() != null) {
-                        current.getNext().setPrevious(current);
-                    }
-                }
-
-                // Check if the previous block is adjacent
-                if (current.getPrevious() != null && current.getPosition()
-                    + current.getSize() == current.getPrevious()
-                        .getPosition()) {
-                    current.getPrevious().setSize(current.getPrevious()
-                        .getSize() + current.getSize());
-                    current.getPrevious().setNext(current.getNext());
-                    if (current.getNext() != null) {
-                        current.getNext().setPrevious(current.getPrevious());
-                    }
-                }
-
-                // Remove the current block from the list (after merging)
-                if (current.getPrevious() != null) {
-                    current.getPrevious().setNext(current.getNext());
-                }
-                if (current.getNext() != null) {
-                    current.getNext().setPrevious(current.getPrevious());
-                }
-                usedMemory -= handle.getLength();
-                return;
-            }
-            current = current.getNext();
-        }
+        int position = handle.getPosition();
+        int size = handle.getSize();
+        freeBlockList = FreeBlock.addFreeBlock(freeBlockList, position, size);
     }
 
 
@@ -189,26 +115,6 @@ public class MemManager {
 
 
     /**
-     * Get used memory.
-     *
-     * @return usedMemory.
-     */
-    public int getUsedMemory() {
-        return usedMemory;
-    }
-
-
-    /**
-     * Get memory pool size.
-     * 
-     * @return memoryPoolSize.
-     */
-    public int getMemoryPoolSize() {
-        return memoryPool.length;
-    }
-
-
-    /**
      * Get free block list.
      * 
      * @return freeBlockList.
@@ -218,26 +124,33 @@ public class MemManager {
     }
 
 
+    public byte[] read(Handle handle) {
+        int position = handle.getPosition();
+        int size = handle.getSize();
+
+        if (position < 0 || position + size > memoryPool.length) {
+            System.err.println("Error: Invalid handle.");
+            return null;
+        }
+
+        byte[] data = new byte[size];
+        System.arraycopy(memoryPool, position, data, 0, size);
+        return data;
+    }
+
+
     /**
      * Print the free block list.
      */
+    /**
+     * Prints the free block list by calling the static print method in
+     * FreeBlock.
+     * This allows external classes to see the current state of the free blocks
+     * in memory.
+     */
     public void printFreeBlockList() {
-        FreeBlock current = freeBlockList;
-
-        if (current == null) {
-            System.out.println("FreeBlock List is empty.");
-            return;
-        }
-        while (current != null) {
-            System.out.print("(" + current.getPosition() + "," + current
-                .getSize() + ")");
-
-            if (current.getNext() != null) {
-                System.out.print(" -> ");
-            }
-            current = current.getNext();
-        }
-        System.out.println();
+        System.out.print("Freeblock List:\n");
+        FreeBlock.printFreeBlocks(freeBlockList);
     }
 
 }
