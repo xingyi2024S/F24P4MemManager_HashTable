@@ -73,7 +73,7 @@ public class Controller {
             byte[] serializedSeminar = newSeminar.serialize();
             int seminarSize = serializedSeminar.length;
 
-            Handle handle = memManager.insert(serializedSeminar, seminarSize);
+            Handle handle = memManager.insert(serializedSeminar);
 
             if (handle != null) {
                 hashTable.insert(id, handle);
@@ -152,21 +152,10 @@ public class Controller {
      * Prints the free block list in the memory manager.
      */
     public void printFreeBlocks() {
-        System.out.println("Freeblock List:");
         memManager.printFreeBlockList();
     }
 
     
-    public byte[] getData(int id) {
-        Handle handle = hashTable.find(id);  
-        if (handle == null) {
-            return null;  
-        }
-
-        byte[] data = new byte[handle.getLength()];  
-        memManager.get(data, handle, handle.getLength());  
-        return data;
-    }
 
     
 }
