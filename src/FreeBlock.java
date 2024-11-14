@@ -229,6 +229,10 @@ public class FreeBlock {
      * Print the free block list.
      */
     public static void printFreeBlocks(FreeBlock head) {
+        if (head == null) {
+            System.out.println("There are no freeblocks in the memory pool");
+            return;
+        }
         FreeBlock current = head;
         while (current != null) {
             System.out.print("(" + current.getPosition() + "," + current
