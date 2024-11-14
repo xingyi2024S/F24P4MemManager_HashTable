@@ -61,7 +61,7 @@ public class ProblemSpecTest extends TestCase {
         SemManager.main(args);
         String output = systemOut().getHistory();
         String referenceOutput = readFile(
-            "TestData/P4Sample_output_wrong_blocks.txt");
+            "TestData/P4Sample_output.txt");
         assertEquals(referenceOutput, output);
     }
 
