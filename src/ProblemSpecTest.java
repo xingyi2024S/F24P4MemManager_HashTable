@@ -83,4 +83,21 @@ public class ProblemSpecTest extends TestCase {
         String referenceOutput = readFile("TestData/P4SimpSample_output.txt");
         assertEquals(referenceOutput, output);
     }
+
+
+    /**
+     * 
+     */
+    @Test
+    public void testCustomInput() throws IOException {
+        String[] args = new String[3];
+        args[0] = "16";
+        args[1] = "2";
+        args[2] = "TestData/custom_input.txt";
+
+        SemManager.main(args);
+        String output = systemOut().getHistory();
+        String referenceOutput = readFile("TestData/custom_output.txt");
+        assertEquals(referenceOutput, output);
+    }
 }

@@ -1,0 +1,275 @@
+Memory pool expanded to 32 bytes
+Memory pool expanded to 48 bytes
+Memory pool expanded to 64 bytes
+Memory pool expanded to 80 bytes
+Memory pool expanded to 96 bytes
+Memory pool expanded to 112 bytes
+Memory pool expanded to 128 bytes
+Memory pool expanded to 144 bytes
+Memory pool expanded to 160 bytes
+Memory pool expanded to 176 bytes
+Successfully inserted record with ID 1
+ID: 1, Title: Overview of HCI Research at VT 1
+Date: 0610051600, Length: 90, X: 10, Y: 10, Cost: 45
+Description: This seminar will present an overview of HCI research at VT
+Keywords: HCI, Computer_Science, VT, Virginia_Tech
+Size: 175
+Memory pool expanded to 192 bytes
+Memory pool expanded to 208 bytes
+Memory pool expanded to 224 bytes
+Memory pool expanded to 240 bytes
+Memory pool expanded to 256 bytes
+Memory pool expanded to 272 bytes
+Memory pool expanded to 288 bytes
+Memory pool expanded to 304 bytes
+Memory pool expanded to 320 bytes
+Memory pool expanded to 336 bytes
+Memory pool expanded to 352 bytes
+Hash table expanded to 4 records
+Successfully inserted record with ID 2
+ID: 2, Title: Overview of HCI Research at VT 2
+Date: 0610051600, Length: 90, X: 10, Y: 10, Cost: 45
+Description: This seminar will present an overview of HCI research at VT
+Keywords: HCI, Computer_Science, VT, Virginia_Tech
+Size: 175
+Memory pool expanded to 368 bytes
+Memory pool expanded to 384 bytes
+Memory pool expanded to 400 bytes
+Memory pool expanded to 416 bytes
+Memory pool expanded to 432 bytes
+Memory pool expanded to 448 bytes
+Memory pool expanded to 464 bytes
+Memory pool expanded to 480 bytes
+Memory pool expanded to 496 bytes
+Memory pool expanded to 512 bytes
+Memory pool expanded to 528 bytes
+Hash table expanded to 8 records
+Successfully inserted record with ID 3
+ID: 3, Title: Overview of HCI Research at VT 3
+Date: 0610051600, Length: 90, X: 10, Y: 10, Cost: 45
+Description: This seminar will present an overview of HCI research at VT
+Keywords: HCI, Computer_Science, VT, Virginia_Tech
+Size: 175
+Memory pool expanded to 544 bytes
+Memory pool expanded to 560 bytes
+Memory pool expanded to 576 bytes
+Memory pool expanded to 592 bytes
+Memory pool expanded to 608 bytes
+Memory pool expanded to 624 bytes
+Memory pool expanded to 640 bytes
+Memory pool expanded to 656 bytes
+Memory pool expanded to 672 bytes
+Memory pool expanded to 688 bytes
+Memory pool expanded to 704 bytes
+Successfully inserted record with ID 4
+ID: 4, Title: Overview of HCI Research at VT 4
+Date: 0610051600, Length: 90, X: 10, Y: 10, Cost: 45
+Description: This seminar will present an overview of HCI research at VT
+Keywords: HCI, Computer_Science, VT, Virginia_Tech
+Size: 175
+Memory pool expanded to 720 bytes
+Memory pool expanded to 736 bytes
+Memory pool expanded to 752 bytes
+Memory pool expanded to 768 bytes
+Memory pool expanded to 784 bytes
+Memory pool expanded to 800 bytes
+Memory pool expanded to 816 bytes
+Memory pool expanded to 832 bytes
+Memory pool expanded to 848 bytes
+Memory pool expanded to 864 bytes
+Memory pool expanded to 880 bytes
+Hash table expanded to 16 records
+Successfully inserted record with ID 5
+ID: 5, Title: Overview of HCI Research at VT 5
+Date: 0610051600, Length: 90, X: 10, Y: 10, Cost: 45
+Description: This seminar will present an overview of HCI research at VT
+Keywords: HCI, Computer_Science, VT, Virginia_Tech
+Size: 175
+Memory pool expanded to 896 bytes
+Memory pool expanded to 912 bytes
+Memory pool expanded to 928 bytes
+Memory pool expanded to 944 bytes
+Memory pool expanded to 960 bytes
+Memory pool expanded to 976 bytes
+Memory pool expanded to 992 bytes
+Memory pool expanded to 1008 bytes
+Memory pool expanded to 1024 bytes
+Memory pool expanded to 1040 bytes
+Memory pool expanded to 1056 bytes
+Successfully inserted record with ID 6
+ID: 6, Title: Overview of HCI Research at VT 6
+Date: 0610051600, Length: 90, X: 10, Y: 10, Cost: 45
+Description: This seminar will present an overview of HCI research at VT
+Keywords: HCI, Computer_Science, VT, Virginia_Tech
+Size: 175
+Memory pool expanded to 1072 bytes
+Memory pool expanded to 1088 bytes
+Memory pool expanded to 1104 bytes
+Memory pool expanded to 1120 bytes
+Memory pool expanded to 1136 bytes
+Memory pool expanded to 1152 bytes
+Memory pool expanded to 1168 bytes
+Memory pool expanded to 1184 bytes
+Memory pool expanded to 1200 bytes
+Memory pool expanded to 1216 bytes
+Memory pool expanded to 1232 bytes
+Successfully inserted record with ID 7
+ID: 7, Title: Overview of HCI Research at VT 7
+Date: 0610051600, Length: 90, X: 10, Y: 10, Cost: 45
+Description: This seminar will present an overview of HCI research at VT
+Keywords: HCI, Computer_Science, VT, Virginia_Tech
+Size: 175
+Memory pool expanded to 1248 bytes
+Memory pool expanded to 1264 bytes
+Memory pool expanded to 1280 bytes
+Memory pool expanded to 1296 bytes
+Memory pool expanded to 1312 bytes
+Memory pool expanded to 1328 bytes
+Memory pool expanded to 1344 bytes
+Memory pool expanded to 1360 bytes
+Memory pool expanded to 1376 bytes
+Memory pool expanded to 1392 bytes
+Memory pool expanded to 1408 bytes
+Successfully inserted record with ID 8
+ID: 8, Title: Overview of HCI Research at VT 8
+Date: 0610051600, Length: 90, X: 10, Y: 10, Cost: 45
+Description: This seminar will present an overview of HCI research at VT
+Keywords: HCI, Computer_Science, VT, Virginia_Tech
+Size: 175
+Memory pool expanded to 1424 bytes
+Memory pool expanded to 1440 bytes
+Memory pool expanded to 1456 bytes
+Memory pool expanded to 1472 bytes
+Memory pool expanded to 1488 bytes
+Memory pool expanded to 1504 bytes
+Memory pool expanded to 1520 bytes
+Memory pool expanded to 1536 bytes
+Memory pool expanded to 1552 bytes
+Memory pool expanded to 1568 bytes
+Memory pool expanded to 1584 bytes
+Hash table expanded to 32 records
+Successfully inserted record with ID 9
+ID: 9, Title: Overview of HCI Research at VT 9
+Date: 0610051600, Length: 90, X: 10, Y: 10, Cost: 45
+Description: This seminar will present an overview of HCI research at VT
+Keywords: HCI, Computer_Science, VT, Virginia_Tech
+Size: 175
+Memory pool expanded to 1600 bytes
+Memory pool expanded to 1616 bytes
+Memory pool expanded to 1632 bytes
+Memory pool expanded to 1648 bytes
+Memory pool expanded to 1664 bytes
+Memory pool expanded to 1680 bytes
+Memory pool expanded to 1696 bytes
+Memory pool expanded to 1712 bytes
+Memory pool expanded to 1728 bytes
+Memory pool expanded to 1744 bytes
+Memory pool expanded to 1760 bytes
+Successfully inserted record with ID 10
+ID: 10, Title: Overview of HCI Research at VT 10
+Date: 0610051600, Length: 90, X: 10, Y: 10, Cost: 45
+Description: This seminar will present an overview of HCI research at VT
+Keywords: HCI, Computer_Science, VT, Virginia_Tech
+Size: 176
+Memory pool expanded to 1776 bytes
+Memory pool expanded to 1792 bytes
+Memory pool expanded to 1808 bytes
+Memory pool expanded to 1824 bytes
+Memory pool expanded to 1840 bytes
+Memory pool expanded to 1856 bytes
+Memory pool expanded to 1872 bytes
+Memory pool expanded to 1888 bytes
+Memory pool expanded to 1904 bytes
+Memory pool expanded to 1920 bytes
+Memory pool expanded to 1936 bytes
+Successfully inserted record with ID 11
+ID: 11, Title: Overview of HCI Research at VT 11
+Date: 0610051600, Length: 90, X: 10, Y: 10, Cost: 45
+Description: This seminar will present an overview of HCI research at VT
+Keywords: HCI, Computer_Science, VT, Virginia_Tech
+Size: 176
+Memory pool expanded to 1952 bytes
+Memory pool expanded to 1968 bytes
+Memory pool expanded to 1984 bytes
+Memory pool expanded to 2000 bytes
+Memory pool expanded to 2016 bytes
+Memory pool expanded to 2032 bytes
+Memory pool expanded to 2048 bytes
+Memory pool expanded to 2064 bytes
+Memory pool expanded to 2080 bytes
+Memory pool expanded to 2096 bytes
+Memory pool expanded to 2112 bytes
+Successfully inserted record with ID 12
+ID: 12, Title: Overview of HCI Research at VT 12
+Date: 0610051600, Length: 90, X: 10, Y: 10, Cost: 45
+Description: This seminar will present an overview of HCI research at VT
+Keywords: HCI, Computer_Science, VT, Virginia_Tech
+Size: 176
+Hashtable:
+1: 1
+2: 2
+3: 3
+4: 4
+5: 5
+6: 6
+7: 7
+8: 8
+9: 9
+10: 10
+11: 11
+12: 12
+total records: 12
+Freeblock List:
+(2103,9)
+Found record with ID 1:
+ID: 1, Title: Overview of HCI Research at VT 1
+Date: 0610051600, Length: 90, X: 10, Y: 10, Cost: 45
+Description: This seminar will present an overview of HCI research at VT
+Keywords: HCI, Computer_Science, VT, Virginia_Tech
+Search FAILED -- There is no record with ID 30
+Delete FAILED -- There is no record with ID 30
+Record with ID 1 successfully deleted from the database
+Search FAILED -- There is no record with ID 1
+Hashtable:
+1: TOMBSTONE
+2: 2
+3: 3
+4: 4
+5: 5
+6: 6
+7: 7
+8: 8
+9: 9
+10: 10
+11: 11
+12: 12
+total records: 11
+Freeblock List:
+(0,175) -> (2103,9)
+Successfully inserted record with ID 1
+ID: 1, Title: A
+Date: 0610051600, Length: 90, X: 10, Y: 10, Cost: 45
+Description: A
+Keywords: A
+Size: 47
+Found record with ID 1:
+ID: 1, Title: A
+Date: 0610051600, Length: 90, X: 10, Y: 10, Cost: 45
+Description: A
+Keywords: A
+Hashtable:
+1: 1
+2: 2
+3: 3
+4: 4
+5: 5
+6: 6
+7: 7
+8: 8
+9: 9
+10: 10
+11: 11
+12: 12
+total records: 12
+Freeblock List:
+(47,128) -> (2103,9)
