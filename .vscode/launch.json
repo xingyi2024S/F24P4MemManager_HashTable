@@ -5,7 +5,7 @@
             "name": "Launch SemManager",
             "request": "launch",
             "args": [
-                "64",
+                "16",
                 "2",
                 "TestData/custom_input.txt"
             ],
