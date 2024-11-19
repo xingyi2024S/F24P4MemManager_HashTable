@@ -30,8 +30,6 @@ public class MemManager {
      * 
      * @param data
      *            The data to insert.
-     * @param size
-     *            The size of the data.
      * @return The Handle for the data we just inserted.
      */
     public Handle insert(byte[] data) {
@@ -39,10 +37,10 @@ public class MemManager {
 
         FreeBlock block = freeBlockList.findFirstFit(dataSize);
 
-        while (block == null ) {
+        while (block == null) {
             expandMemoryPool();
             System.out.println("Memory pool expanded to " + memoryPool.length
-            + " bytes");
+                + " bytes");
             block = freeBlockList.findFirstFit(dataSize);
         }
 
@@ -124,6 +122,13 @@ public class MemManager {
     }
 
 
+    /**
+     * Return the byte array data that the handle is holding in mem pool.
+     * 
+     * @param handle
+     *            The handle with the data to get.
+     * @return The data in byte array form.
+     */
     public byte[] read(Handle handle) {
         int position = handle.getPosition();
         int size = handle.getSize();
@@ -139,9 +144,6 @@ public class MemManager {
     }
 
 
-    /**
-     * Print the free block list.
-     */
     /**
      * Prints the free block list by calling the static print method in
      * FreeBlock.
@@ -162,7 +164,5 @@ public class MemManager {
     public int getMemoryPoolSize() {
         return memoryPool.length;
     }
-
- 
 
 }

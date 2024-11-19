@@ -29,7 +29,7 @@ public class FreeBlock {
 
 
     /**
-     * Get position.
+     * Get position of this free block.
      * 
      * @return Position.
      */
@@ -38,10 +38,12 @@ public class FreeBlock {
     }
 
 
+
     /**
-     * Set position.
+     * Set the position of this free block.
      * 
-     * @return Position.
+     * @param position
+     *          The position to set to this free block.
      */
     public void setPosition(int position) {
         this.position = position;
@@ -203,6 +205,13 @@ public class FreeBlock {
 
     /**
      * Removes the specified block from the list.
+     * 
+     * @param head
+     *            The head of the free block list.
+     * @param block
+     *            The block to remove from the free block list.
+     * @return
+     *          Return the head free block.
      */
     public static FreeBlock remove(FreeBlock head, FreeBlock block) {
         if (block == null)
@@ -227,6 +236,9 @@ public class FreeBlock {
 
     /**
      * Print the free block list.
+     * 
+     * @param head
+     *            The head of the free block list.
      */
     public static void printFreeBlocks(FreeBlock head) {
         if (head == null) {

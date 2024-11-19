@@ -51,11 +51,11 @@ public class HandleTest {
     @Test
     public void testEquals() {
         // Test equality with identical position and length
-        assertTrue(handle1.equals(handle3)); 
-        assertTrue(handle3.equals(handle1)); 
+        assertTrue(handle1.equals(handle3));
+        assertTrue(handle3.equals(handle1));
 
         // Test equality with the same object reference
-        assertTrue(handle1.equals(handle1)); 
+        assertTrue(handle1.equals(handle1));
 
         // Test inequality with different positions
         Handle differentPosition = new Handle(15, handle1.getLength());
@@ -69,7 +69,7 @@ public class HandleTest {
         assertFalse(handle1.equals(null)); // Null check
 
         // Test inequality when comparing with an object of a different type
-        assertFalse(handle1.equals("Some String")); 
+        assertFalse(handle1.equals("Some String"));
 
         // Test consistency: multiple invocations should return the same result
         assertTrue(handle1.equals(handle3));
