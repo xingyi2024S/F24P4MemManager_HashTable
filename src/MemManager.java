@@ -39,11 +39,11 @@ public class MemManager {
 
         FreeBlock block = freeBlockList.findFirstFit(dataSize);
 
-        if (block == null) {
+        while (block == null ) {
             expandMemoryPool();
-            block = freeBlockList.findFirstFit(dataSize);
             System.out.println("Memory pool expanded to " + memoryPool.length
-                + " bytes");
+            + " bytes");
+            block = freeBlockList.findFirstFit(dataSize);
         }
 
         System.arraycopy(data, 0, memoryPool, block.getPosition(), dataSize);
