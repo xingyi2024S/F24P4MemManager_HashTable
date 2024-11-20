@@ -75,14 +75,10 @@ public class Controller {
 
             Handle handle = memManager.insert(serializedSeminar);
 
-            if (handle != null) {
-                hashTable.insert(id, handle);
-                System.out.println("Successfully inserted record with ID "
-                    + id);
-                System.out.println(newSeminar.toString());
-                System.out.println("Size: " + seminarSize);
-
-            }
+            hashTable.insert(id, handle);
+            System.out.println("Successfully inserted record with ID " + id);
+            System.out.println(newSeminar.toString());
+            System.out.println("Size: " + seminarSize);
         }
         catch (Exception e) {
             e.printStackTrace();

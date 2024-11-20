@@ -75,3 +75,5 @@ A
 search 1
 print hashtable
 print blocks
+print hashtable
+print test

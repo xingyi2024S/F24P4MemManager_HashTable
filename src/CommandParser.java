@@ -129,9 +129,7 @@ public class CommandParser {
             controller.printFreeBlocks();
         }
         else {
-            System.out.println(
-                "Invalid print command." +
-                    "Please specify 'hashtable' or 'freeblock'.");
+            System.out.println("Print command has bad parameter");
         }
     }
 }
