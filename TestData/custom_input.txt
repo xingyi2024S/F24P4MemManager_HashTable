@@ -77,3 +77,6 @@ print hashtable
 print blocks
 print hashtable
 print test
+delete 2
+print blocks
+print hashtable

@@ -1,5 +1,5 @@
 import java.util.Iterator;
-
+import org.junit.Test;
 import student.TestCase;
 
 /**
@@ -73,7 +73,6 @@ public class DLListTest extends TestCase {
         list.add("B");
         assertEquals(2, list.size());
         assertEquals("B", list.get(1));
-
     }
 
 
@@ -113,40 +112,28 @@ public class DLListTest extends TestCase {
      * This tests that the add method throws a Invalid argument when adding null
      * data to the list
      */
-    public void testAddIndexNullException() {
-        Exception e = null;
-        try {
-            list.add(0, null);
-        }
-        catch (Exception exception) {
-            e = exception;
-        }
-        assertTrue(e instanceof IllegalArgumentException);
+    @Test(expected = IllegalArgumentException.class)
+    public void testAddIllegalArgumentException() {
+        list.add(0, null);
     }
 
 
     /**
      * This tests when the add method is called and the index is greater than
-     * size or less than zero
+     * size.
      */
-    public void testAddException() {
-        list.add("A");
-        Exception e = null;
-        try {
-            list.add(2, "B");
-        }
-        catch (Exception exception) {
-            e = exception;
-        }
-        assertTrue(e instanceof IndexOutOfBoundsException);
-        e = null;
-        try {
-            list.add(-1, "B");
-        }
-        catch (Exception exception) {
-            e = exception;
-        }
-        assertTrue(e instanceof IndexOutOfBoundsException);
+    @Test(expected = IndexOutOfBoundsException.class)
+    public void testAddIndexOutOfBoundsException1() {
+        list.add(2, "B");
+    }
+
+
+    /**
+     * This tests when the add method is called and the index is less than zero
+     */
+    @Test(expected = IndexOutOfBoundsException.class)
+    public void testAddIndexOutOfBoundsException2() {
+        list.add(-1, "B");
     }
 
 
@@ -154,17 +141,28 @@ public class DLListTest extends TestCase {
      * Tests removing a object changes the size appropiately and that you can
      * remove the first and last elements
      */
+    @Test
     public void testRemoveObj() {
         assertFalse(list.remove(null));
         list.add("A");
         list.add("B");
-        assertEquals(2, list.size());
+        list.add("C");
+        list.add("D");
+        assertEquals(4, list.size());
         assertTrue(list.remove("A"));
         assertEquals("B", list.get(0));
-        assertEquals(1, list.size());
-        list.add("C");
+        assertEquals(3, list.size());
+        list.add("E");
+        assertEquals(4, list.size());
         assertTrue(list.remove("C"));
+        assertEquals(3, list.size());
         assertEquals("B", list.get(0));
+        assertTrue(list.remove("B"));
+        assertEquals(2, list.size());
+        assertTrue(list.remove("D"));
+        assertEquals(1, list.size());
+        assertTrue(list.remove("E"));
+        assertEquals(0, list.size());
     }
 
 

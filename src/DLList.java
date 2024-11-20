@@ -204,7 +204,10 @@ public class DLList<E> implements Iterable<E> {
      *             if obj is null
      */
     public void add(int index, E obj) {
-        if (index < 0 || size < index) {
+        if (index < 0) {
+            throw new IndexOutOfBoundsException();
+        }
+        if (size < index) {
             throw new IndexOutOfBoundsException();
         }
         if (obj == null) {
@@ -226,13 +229,12 @@ public class DLList<E> implements Iterable<E> {
         nodeAfter.previous().setNext(addition);
         nodeAfter.setPrevious(addition);
         size++;
-
     }
 
 
     /**
      * gets the node at that index
-     * 
+     *
      * @param index
      * @return node at index
      */
@@ -322,18 +324,15 @@ public class DLList<E> implements Iterable<E> {
     @Override
     public String toString() {
         StringBuilder builder = new StringBuilder("{");
-        if (!isEmpty()) {
-            Node<E> currNode = head.next();
-            while (currNode != tail) {
-                E element = currNode.getData();
-                builder.append(element.toString());
-                if (currNode.next != tail) {
-                    builder.append(", ");
-                }
-                currNode = currNode.next();
+        Node<E> currNode = head.next();
+        while (currNode != tail) {
+            E element = currNode.getData();
+            builder.append(element.toString());
+            if (currNode.next != tail) {
+                builder.append(", ");
             }
+            currNode = currNode.next();
         }
-
         builder.append("}");
         return builder.toString();
     }
@@ -344,6 +343,7 @@ public class DLList<E> implements Iterable<E> {
      *
      * @return new Iterator object
      */
+    @Override
     public Iterator<E> iterator() {
         return new DLListIterator<E>();
     }
