@@ -4,6 +4,10 @@ import student.TestCase;
 
 /**
  * SemManagerTest
+ * 
+ * @author Zhengyang Lu
+ * @author Xingyi Wang
+ * @version 2024.11.10
  */
 public class SemManagerTest extends TestCase {
 

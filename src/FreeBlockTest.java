@@ -9,7 +9,7 @@ import student.TestCase;
  * @version 2024.11.10
  */
 public class FreeBlockTest extends TestCase {
-    
+
     /**
      * Test adding free blocks.
      */
@@ -24,6 +24,19 @@ public class FreeBlockTest extends TestCase {
         assertEquals(systemOut().getHistory(), "(0,1) -> (2,6)\n");
         systemOut().clearHistory();
     }
+
+
+    /**
+     * Test adding null.
+     */
+    @Test
+    public void addFreeBlockNullTest() {
+        FreeBlock block01 = FreeBlock.addFreeBlock(null, 0, 1);
+        FreeBlock.printFreeBlocks(block01);
+        assertEquals(systemOut().getHistory(), "(0,1)\n");
+        systemOut().clearHistory();
+    }
+
 
     /**
      * Test removing free blocks.
@@ -46,4 +59,15 @@ public class FreeBlockTest extends TestCase {
         systemOut().clearHistory();
     }
 
+
+    /**
+     * Test print null.
+     */
+    @Test
+    public void printFreeBlocksNullTest() {
+        FreeBlock.printFreeBlocks(null);
+        assertEquals(systemOut().getHistory(),
+            "There are no freeblocks in the memory pool\n");
+        systemOut().clearHistory();
+    }
 }
