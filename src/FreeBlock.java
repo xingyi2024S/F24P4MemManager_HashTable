@@ -1,6 +1,6 @@
 /**
  * FreeBlock class.
- * 
+ *
  * @author Xingyi Wang
  * @author Zhengyang Lu
  * @version 2024.11.12
@@ -14,7 +14,7 @@ public class FreeBlock {
 
     /**
      * Constructor to create a FreeBlock.
-     * 
+     *
      * @param position
      *            The position of the free block in memory.
      * @param size
@@ -30,7 +30,7 @@ public class FreeBlock {
 
     /**
      * Get position of this free block.
-     * 
+     *
      * @return Position.
      */
     public int getPosition() {
@@ -38,12 +38,11 @@ public class FreeBlock {
     }
 
 
-
     /**
      * Set the position of this free block.
-     * 
+     *
      * @param position
-     *          The position to set to this free block.
+     *            The position to set to this free block.
      */
     public void setPosition(int position) {
         this.position = position;
@@ -52,7 +51,7 @@ public class FreeBlock {
 
     /**
      * Get size.
-     * 
+     *
      * @return Size.
      */
     public int getSize() {
@@ -62,7 +61,7 @@ public class FreeBlock {
 
     /**
      * Set size.
-     * 
+     *
      * @param size
      *            Size to set.
      */
@@ -73,7 +72,7 @@ public class FreeBlock {
 
     /**
      * Get the next FreeBlock.
-     * 
+     *
      * @return The next FreeBlock.
      */
     public FreeBlock getNext() {
@@ -83,7 +82,7 @@ public class FreeBlock {
 
     /**
      * Set the next FreeBlock.
-     * 
+     *
      * @param next
      *            The FreeBlock to set as next.
      */
@@ -94,7 +93,7 @@ public class FreeBlock {
 
     /**
      * Get the previous FreeBlock.
-     * 
+     *
      * @return The previous FreeBlock.
      */
     public FreeBlock getPrevious() {
@@ -104,7 +103,7 @@ public class FreeBlock {
 
     /**
      * Set the next FreeBlock.
-     * 
+     *
      * @param previous
      *            The FreeBlock to set as previous.
      */
@@ -205,17 +204,15 @@ public class FreeBlock {
 
     /**
      * Removes the specified block from the list.
-     * 
+     *
      * @param head
      *            The head of the free block list.
      * @param block
      *            The block to remove from the free block list.
      * @return
-     *          Return the head free block.
+     *         Return the head free block.
      */
     public static FreeBlock remove(FreeBlock head, FreeBlock block) {
-        if (block == null)
-            return head;
 
         if (block.previous != null) {
             block.previous.next = block.next;
@@ -236,7 +233,7 @@ public class FreeBlock {
 
     /**
      * Print the free block list.
-     * 
+     *
      * @param head
      *            The head of the free block list.
      */
