@@ -45,11 +45,9 @@ public class SemManager {
      */
     public static void main(String[] args) {
         // Ensure correct number of arguments
-        if (args.length < 3) {
-            System.out.println(
-                "Usage: java SemManager <memory pool size>"
-                    + "<hash table size> <command file>");
-            return;
+        if (args.length != 3) {
+            throw new IllegalArgumentException("Expected exactly 3 arguments: "
+            + "<memory pool size>, <hash table size>, <command file>");
         }
 
         try {

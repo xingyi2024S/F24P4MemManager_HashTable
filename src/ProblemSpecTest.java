@@ -86,7 +86,7 @@ public class ProblemSpecTest extends TestCase {
 
 
     /**
-     * 
+     * Test custom input.
      */
     @Test
     public void testCustomInput() throws IOException {
@@ -100,4 +100,5 @@ public class ProblemSpecTest extends TestCase {
         String referenceOutput = readFile("TestData/custom_output.txt");
         assertEquals(referenceOutput, output);
     }
+
 }

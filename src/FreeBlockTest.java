@@ -15,13 +15,34 @@ public class FreeBlockTest extends TestCase {
      */
     @Test
     public void addFreeBlockTest() {
-        FreeBlock freeBlock01 = new FreeBlock(0, 1);
-        FreeBlock freeBlock02 = new FreeBlock(3, 5);
-        freeBlock01.setNext(freeBlock02);
-        freeBlock02.setPrevious(freeBlock01);
-        FreeBlock.addFreeBlock(freeBlock01, 2, 1);
-        FreeBlock.printFreeBlocks(freeBlock01);
+        FreeBlock block01 = new FreeBlock(0, 1);
+        FreeBlock block02 = new FreeBlock(3, 5);
+        block01.setNext(block02);
+        block02.setPrevious(block01);
+        FreeBlock.addFreeBlock(block01, 2, 1);
+        FreeBlock.printFreeBlocks(block01);
         assertEquals(systemOut().getHistory(), "(0,1) -> (2,6)\n");
+        systemOut().clearHistory();
+    }
+
+    /**
+     * Test removing free blocks.
+     */
+    @Test
+    public void removeFreeBlockTest() {
+        FreeBlock block01 = new FreeBlock(0, 1);
+        FreeBlock block02 = new FreeBlock(2, 2);
+        FreeBlock block03 = new FreeBlock(5, 3);
+        block01.setNext(block02);
+        block02.setPrevious(block01);
+        block02.setNext(block03);
+        block03.setPrevious(block02);
+        FreeBlock.printFreeBlocks(block01);
+        assertEquals(systemOut().getHistory(), "(0,1) -> (2,2) -> (5,3)\n");
+        systemOut().clearHistory();
+        FreeBlock.remove(block01, block02);
+        FreeBlock.printFreeBlocks(block01);
+        assertEquals(systemOut().getHistory(), "(0,1) -> (5,3)\n");
         systemOut().clearHistory();
     }
 

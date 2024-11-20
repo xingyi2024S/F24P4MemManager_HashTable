@@ -17,7 +17,7 @@ public class Hash {
 
     /**
      * Constructs a new Hash object with the specified initial capacity.
-     * 
+     *
      * @param initialCapacity
      *            The initial capacity of the hash table.
      */
@@ -30,19 +30,19 @@ public class Hash {
 
     /**
      * Computes the hash value for the given ID.
-     * 
+     *
      * @param id
      *            The ID to be hashed.
      * @return The hash value of the ID.
      */
-    private int hash(int id) {
+    public int hash(int id) {
         return id % capacity;
     }
 
 
     /**
      * Inserts an ID into the hash table with its associated memory handle.
-     * 
+     *
      * @param id
      *            The ID to insert into the table.
      * @param handle
@@ -101,7 +101,7 @@ public class Hash {
 
     /**
      * Finds the handle associated with the given ID.
-     * 
+     *
      * @param id
      *            The ID to find in the table.
      * @return The handle associated with the ID, or null if not found.
@@ -129,7 +129,7 @@ public class Hash {
 
     /**
      * Removes the specified ID from the hash table.
-     * 
+     *
      * @param id
      *            The ID to remove.
      * @return The handle associated with the removed ID, or null if the ID is
@@ -161,7 +161,7 @@ public class Hash {
 
     /**
      * Probing function for collision resolution (quadratic probing).
-     * 
+     *
      * @param home
      *            The initial hash position.
      * @param i
@@ -175,7 +175,7 @@ public class Hash {
 
     /**
      * Returns the current capacity of the hash table.
-     * 
+     *
      * @return The capacity of the hash table.
      */
     public int getCapacity() {

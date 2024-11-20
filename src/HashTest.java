@@ -181,4 +181,16 @@ public class HashTest {
 
     }
 
+    /**
+     * Test hash method.
+     */
+    @Test
+    public void testHash() {
+        Hash hash = new Hash(16);
+        assertTrue(hash.hash(1) == 1);
+        assertTrue(hash.hash(2) == 2);
+        assertTrue(hash.hash(16) == 0);
+        assertTrue(hash.hash(17) == 1);
+    }
+
 }
